@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.1.1">
+<procedure name="ggs_genOnlySlantTransMat">
+<interface>
+<ic>
+<par name="thetaX" base_type="ctrl" dimension="0"/>
+<par name="thetaY" base_type="ctrl" dimension="0"/>
+<par name="px" base_type="ctrl" dimension="0"/>
+<par name="py" base_type="ctrl" dimension="0"/>
+<par name="isXFirst" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="slantMat" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>try</l>
+<l>    hom_mat2d_identity (HomMat2DIdentity)</l>
+<l>    if (isXFirst == 1)</l>
+<l>        hom_mat2d_slant (HomMat2DIdentity, rad(thetaX), 'x', px, py, HomMat2DSlantX)</l>
+<l>        hom_mat2d_slant (HomMat2DSlantX, rad(thetaY), 'y', px, py, slantMat)</l>
+<l>    else</l>
+<l>        hom_mat2d_slant (HomMat2DIdentity, rad(thetaY), 'y', px, py, HomMat2DSlantY)</l>
+<l>        hom_mat2d_slant (HomMat2DSlantY, rad(thetaX), 'x', px, py, slantMat)</l>
+<l>    endif</l>
+<c>    </c>
+<l>catch (Exception)</l>
+<l>    hom_mat2d_identity (slantMat)</l>
+<l>endtry</l>
+<c></c>
+<l>return ()</l>
+</body>
+<docu id="ggs_genOnlySlantTransMat">
+<parameters>
+<parameter id="isXFirst"/>
+<parameter id="px"/>
+<parameter id="py"/>
+<parameter id="slantMat"/>
+<parameter id="thetaX"/>
+<parameter id="thetaY"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

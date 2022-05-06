@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.1.1">
+<procedure name="ggs_applyPointAffineMat">
+<interface>
+<ic>
+<par name="rows" base_type="ctrl" dimension="0"/>
+<par name="cols" base_type="ctrl" dimension="0"/>
+<par name="affineMat" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="affineRows" base_type="ctrl" dimension="0"/>
+<par name="affineCols" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>try</l>
+<l>    affine_trans_point_2d (affineMat, cols, rows, affineCols, affineRows)</l>
+<l>catch (Exception)</l>
+<l>    affineRows := rows</l>
+<l>    affineCols := cols</l>
+<l>endtry</l>
+<c></c>
+<l>return ()</l>
+</body>
+<docu id="ggs_applyPointAffineMat">
+<parameters>
+<parameter id="affineCols"/>
+<parameter id="affineMat"/>
+<parameter id="affineRows"/>
+<parameter id="cols"/>
+<parameter id="rows"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.1.1">
+<procedure name="ggs_genThreePointsTransMat">
+<interface>
+<ic>
+<par name="pointRow1" base_type="ctrl" dimension="0"/>
+<par name="pointCol1" base_type="ctrl" dimension="0"/>
+<par name="pointRow2" base_type="ctrl" dimension="0"/>
+<par name="pointCol2" base_type="ctrl" dimension="0"/>
+<par name="pointRow3" base_type="ctrl" dimension="0"/>
+<par name="pointCols" base_type="ctrl" dimension="0"/>
+<par name="transPointRow1" base_type="ctrl" dimension="0"/>
+<par name="transPointCol1" base_type="ctrl" dimension="0"/>
+<par name="transPointRow2" base_type="ctrl" dimension="0"/>
+<par name="transPointCol2" base_type="ctrl" dimension="0"/>
+<par name="transPointRow3" base_type="ctrl" dimension="0"/>
+<par name="transPointCol3" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="transMat" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>try</l>
+<l>    pointRows := []</l>
+<l>    pointCols := []</l>
+<l>    transPointRows := []</l>
+<l>    transPointCols := []</l>
+<c>    </c>
+<l>    vector_to_hom_mat2d (pointCols, pointRows, transPointCols, transPointRows, transMat)</l>
+<c>    </c>
+<l>catch (Exception)</l>
+<l>    hom_mat2d_identity (transMat)</l>
+<l>endtry</l>
+<c></c>
+<l>return ()</l>
+</body>
+<docu id="ggs_genThreePointsTransMat">
+<parameters>
+<parameter id="pointCol1"/>
+<parameter id="pointCol2"/>
+<parameter id="pointCols"/>
+<parameter id="pointRow1"/>
+<parameter id="pointRow2"/>
+<parameter id="pointRow3"/>
+<parameter id="transMat"/>
+<parameter id="transPointCol1"/>
+<parameter id="transPointCol2"/>
+<parameter id="transPointCol3"/>
+<parameter id="transPointRow1"/>
+<parameter id="transPointRow2"/>
+<parameter id="transPointRow3"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.1.1">
+<procedure name="ggs_applyAddSlantTransMat">
+<interface>
+<ic>
+<par name="rows" base_type="ctrl" dimension="0"/>
+<par name="cols" base_type="ctrl" dimension="0"/>
+<par name="transMat" base_type="ctrl" dimension="0"/>
+<par name="thetaX" base_type="ctrl" dimension="0"/>
+<par name="thetaY" base_type="ctrl" dimension="0"/>
+<par name="px" base_type="ctrl" dimension="0"/>
+<par name="py" base_type="ctrl" dimension="0"/>
+<par name="isXFirst" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="slantRows" base_type="ctrl" dimension="0"/>
+<par name="slantCols" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>try</l>
+<l>    ggs_genAddSlantTransMat (transMat, thetaX, thetaY, px, py, isXFirst, slantMat)</l>
+<l>    affine_trans_point_2d (slantMat, cols, rows, slantCols, slantRows)</l>
+<l>catch (Exception)</l>
+<l>    slantRows := rows</l>
+<l>    slantCols := cols</l>
+<l>endtry</l>
+<c></c>
+<l>return ()</l>
+</body>
+<docu id="ggs_applyAddSlantTransMat">
+<parameters>
+<parameter id="cols"/>
+<parameter id="isXFirst"/>
+<parameter id="px"/>
+<parameter id="py"/>
+<parameter id="rows"/>
+<parameter id="slantCols"/>
+<parameter id="slantRows"/>
+<parameter id="thetaX"/>
+<parameter id="thetaY"/>
+<parameter id="transMat"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>
